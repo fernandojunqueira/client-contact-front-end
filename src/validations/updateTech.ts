@@ -1,8 +1,8 @@
 import * as yup from "yup";
 
 export const schema = yup.object({
-
-    status: yup
-    .string()
-    .required('Status é obrigatório')
+  firstName: yup.string().notRequired(),
+  lastName: yup.string().notRequired(),
+  phone: yup.string().notRequired(),
+  email: yup.string().notRequired(),
   })

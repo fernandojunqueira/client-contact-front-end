@@ -11,8 +11,11 @@ import { StyledModal } from '../RegisterModal/styled'
 import { StyledDiv } from './style'
 
 
-interface iUpdateTech{
-    status: string;
+export interface iUpdateContact{
+    firstName?: string;
+    lastName?: string;
+    phone?: string;
+    email?: string;
   }
 
 const UpdateModal    = () => {
@@ -20,11 +23,9 @@ const UpdateModal    = () => {
     const { updateTech , deleteTech } = useContext(TechContext)
     const {  setOpenUpdateModal , openUpdateModal } = useContext(UserContext)
 
-    const { register, handleSubmit,formState:{ errors } } = useForm<iUpdateTech>({
+    const { register, handleSubmit } = useForm<iUpdateContact>({
         resolver: yupResolver(schema),  
     });
-
-    console.log(errors)
 
   return (
         <StyledModal>
@@ -36,23 +37,38 @@ const UpdateModal    = () => {
                     </header>
 
                     <StyledForm className='form__modal' onSubmit={handleSubmit(updateTech)}>
-                        <label htmlFor='email'>Nome</label>
+
+                        <label htmlFor='firstName'>Nome</label>
+                        <StyledInput 
+                        type="text" 
+                        id='firstName' 
+                        placeholder='Digite aqui a tecnologia'
+                        {...register("firstName")}         
+                        />
+
+                        <label htmlFor='email'>Sobrenome</label>
                         <StyledInput 
                         type="text" 
                         id='email' 
                         placeholder='Digite aqui a tecnologia'
-                        value={openUpdateModal?.title}
-                        disabled         
+                        {...register("lastName")}         
                         />
-                        
-                       
 
-                        <label htmlFor='module' >Selecionar status</label>
-                        <select  id="module" {...register("status")}>
-                            <option value="Iniciante" >Iniciante</option>
-                            <option value="Intermediário">Intermediário</option>
-                            <option value="Avançado">Avançado</option>
-                        </select>
+                        <label htmlFor='phone'>Telefone</label>
+                        <StyledInput 
+                        type="text" 
+                        id='phone' 
+                        placeholder='Digite aqui a tecnologia'
+                        {...register("phone")}         
+                        />
+
+                        <label htmlFor='email'>Email</label>
+                        <StyledInput 
+                        type="text" 
+                        id='email' 
+                        placeholder='Digite aqui a tecnologia'
+                        {...register("email")} 
+                        />
                         
                         <StyledDiv>
                             <StyledButton 

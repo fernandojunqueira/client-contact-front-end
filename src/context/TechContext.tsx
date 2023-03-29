@@ -1,37 +1,32 @@
-import { createContext, ReactNode, useContext, useEffect } from "react";
+import { createContext, ReactNode, useContext } from "react";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import api from "../services/api";
 import { UserContext } from "./UserContext";
+import { iContacts } from "../services/getProfiles";
+import { iUpdateContact } from "../components/UpdateModal";
 
 interface iTechContextProps{
   children: ReactNode;
 }
 
-interface iRegisterNewTech{
-  title: string;
-  status: string;
-}
-
-interface iUpdateTech{
-  status: string;
-}
-
-interface iTechContext{
-  registerNewTech: (body:iRegisterNewTech) => void;
-  updateTech: (body:iUpdateTech) => void;
+interface iContactContext{
+  registerNewContact: (body:iContacts) => void;
+  updateTech: (body:iUpdateContact) => void;
   deleteTech: () => void;
 }
 
-export const TechContext = createContext({} as iTechContext)
+export const TechContext = createContext({} as iContactContext)
 
 function TechProvider({children}:iTechContextProps){
 
-    const { close, setClose, setDel , openUpdateModal , setOpenUpdateModal } = useContext(UserContext)
+    const { setClose, setDel , openUpdateModal , setOpenUpdateModal } = useContext(UserContext)
 
-    const registerNewTech = async (body:iRegisterNewTech) => {
+    const registerNewContact = async (body:iContacts) => {
         try {
-          await api.post('users/techs',body)
+          const clientId = localStorage.getItem("@clientId")
+      
+          await api.post(`/contact/${clientId}`,body)
         
           toast.success("Nova tecnologia cadastrada", {
             theme: "dark"
@@ -40,16 +35,17 @@ function TechProvider({children}:iTechContextProps){
           setClose(false)
 
         } catch (error) {
-            toast.error(`Essa tecnologia já foi criada.`, {
+            toast.error(`Essa contato já foi adicionado.`, {
                 theme: "dark"
               })
         }   
     }
 
-    const updateTech =  async (body:iUpdateTech) => {
+    const updateTech =  async (body:iUpdateContact) => {
     
       try {
-        await api.put(`/users/techs/${openUpdateModal?.id}`,body)
+        console.log(body)
+        await api.patch(`/contact/${openUpdateModal?.id}`,body)
 
         toast.success("Tecnologia atualizada", {
           theme: "dark"
@@ -65,7 +61,7 @@ function TechProvider({children}:iTechContextProps){
     const deleteTech = async () => {
     
         try {
-            const response = await api.delete(`users/techs/${openUpdateModal?.id}`)
+           await api.delete(`users/techs/${openUpdateModal?.id}`)
 
             setDel('Deleted')
             setOpenUpdateModal(null)
@@ -76,7 +72,7 @@ function TechProvider({children}:iTechContextProps){
     }
 
     return(
-        <TechContext.Provider value={{ registerNewTech  , deleteTech, updateTech  }}>
+        <TechContext.Provider value={{ registerNewContact  , deleteTech, updateTech  }}>
             {children}
         </TechContext.Provider>
     )

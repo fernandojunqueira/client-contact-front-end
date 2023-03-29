@@ -9,7 +9,7 @@ export const StyledModal = styled.div`
     z-index: 101;
 
     p{
-        color: white;
+        color: #000000;
         overflow: unset;
         font-size: 12px;
     }

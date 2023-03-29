@@ -3,31 +3,27 @@ import api from "./api"
 export interface iProfile{
   
   id: string; 
-  name: string;
+  firstName: string;
+  lastName:string;
+  phone: string;
   email: string;
-  course_module:string;
-  bio: string;
-  contact: string;
-  techs: 
-    {
-    id: string ; 
-    title: string ; 
-    status: string ; 
-    created_at: string ; 
-    updated_at: string ; 
-  }
-,
-  works: [],
-  created_at: string;
-  updated_at: string;
-  avatar_url: null;
-  
+  registrationDate: Date;
+  contacts: iContacts[]
 }
 
-export async function getProfile(token:string): Promise<iProfile> {
+export interface iContacts{
+  registrationDate:Date
+	email:string
+	phone:string
+	lastName:string
+	firstName:string
+	id:string
+}
+
+export async function getProfile(token:string, clientId:string | null): Promise<iProfile> {
     api.defaults.headers.common.authorization = `Bearer ${token}`
   
-    const {data} = await api.get<iProfile>('/profile')
+    const {data} = await api.get<iProfile>(`/client/${clientId}`)
 
     return data
 }

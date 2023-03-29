@@ -1,7 +1,6 @@
 import api from "./api";
 
 export interface iRegisterBody{
-  
     email: string ; 
     password: string ; 
     firstName: string ; 
@@ -10,7 +9,16 @@ export interface iRegisterBody{
     
   }
 
-export async function postRegister(body:iRegisterBody): Promise<void>{
+export interface iRegisterResponse{
+    id:string ;
+    email: string ; 
+    password: string ; 
+    firstName: string ; 
+    lastName: string ; 
+    phone: string ; 
+    registerData: string ; 
+  }
 
-    await api.post('users',body)
+export async function postRegister(body:iRegisterBody): Promise<void>{
+    await api.post('/client',body)
 }

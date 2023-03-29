@@ -2,7 +2,7 @@ import { createContext,  ReactNode,  useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { getProfile, iProfile } from "../services/getProfiles";
+import { getProfile, iContacts, iProfile } from "../services/getProfiles";
 import { iLoginBody, postLogin } from "../services/postLogin";
 import { iRegisterBody, postRegister } from "../services/postRegister";
 
@@ -32,7 +32,10 @@ interface iWorks{
 }
 
 interface iOpenModal{
-  title: string;
+  firstName: string;
+  lastName: string;
+  phone: string;
+  email: string;
   id: string;
 }
 
@@ -43,8 +46,8 @@ interface iUserContext{
   setLoading:React.Dispatch<React.SetStateAction<boolean>>;
   loadingPage:boolean;
   setLoadingPage?:React.Dispatch<React.SetStateAction<boolean>>;
-  techs:iTechs | null;
-  setTechs?:React.Dispatch<React.SetStateAction<iTechs | null>>;
+  contacts:iContacts[] | null;
+  setContacts?:React.Dispatch<React.SetStateAction<iContacts[] | null>>;
   close:boolean;
   setClose:React.Dispatch<React.SetStateAction<boolean>>;
   del:string | null;
@@ -68,7 +71,7 @@ function UserProvider({children}:iUserContextProps){
     const [user, setUser] = useState<iProfile | null>(null)
     const [loading, setLoading] = useState(false)
     const [loadingPage, setLoadingPage] = useState(true)
-    const [techs, setTechs] = useState<iTechs | null>(null)
+    const [contacts, setContacts] = useState<iContacts[] | null>(null)
     const [works, setWorks] = useState<iWorks[] | null>([])
     const [close, setClose] = useState(false)
     const [del, setDel] = useState<string | null>(null)
@@ -78,18 +81,18 @@ function UserProvider({children}:iUserContextProps){
     const navigate = useNavigate()
 
     useEffect(() => {
-      console.log('useEffect do load user')
+  
       async function loadUser(){
-        const token = localStorage.getItem('@KenzieHubToken')
+        const token = localStorage.getItem('@clientToken')
+        const clientId = localStorage.getItem('@clientId')
         
         if(token) {
           try {
 
-           const data = await getProfile(token)
+           const data = await getProfile(token,clientId)
 
             setUser(data)
-            setTechs(data.techs)
-            setWorks(data.works)
+            setContacts(data.contacts)
             
           } catch (error) {
             console.error(error)
@@ -110,19 +113,16 @@ function UserProvider({children}:iUserContextProps){
           setLoading(true)
       
           const data = await postLogin(body)
-      
-          setUser(data.user)
-          setTechs(data.user.techs)
-      
-          localStorage.setItem('@KenzieHubToken',data.token)
-          localStorage.setItem('@KenzieHubId',data.user.id)
+            
+          localStorage.setItem('@clientToken',data.token)
+          localStorage.setItem('@clientId', data.id)
       
           toast.success("Login realizado com sucesso!", {
             theme: "dark"
           })
 
           const toNavigate:string = location.state?.from?.pathname ||  'dashboard'
-      
+ 
           navigate(toNavigate ,{replace:true})
       
         } catch ({response}:any) {
@@ -139,7 +139,7 @@ function UserProvider({children}:iUserContextProps){
     const  registerUser = async (body:iRegisterBody) => {
       try {
           setLoading(true)
-          postRegister(body)
+          await postRegister(body)
 
           toast.success("Conta criada com sucesso!", {
               theme: "dark"
@@ -159,14 +159,33 @@ function UserProvider({children}:iUserContextProps){
       }
 
     const logOut = () =>{
-        localStorage.removeItem('@KenzieHubToken')
-        localStorage.removeItem('@KenzieHubId')
+        localStorage.removeItem('@clientToken')
+        localStorage.removeItem('@clientId')
     }
 
 
 
     return(
-        <UserContext.Provider value={ { user,setUser,loading,setLoading,loginUser,registerUser,loadingPage,logOut, techs, close, setClose, del, setDel ,openUpdateModal,setOpenUpdateModal,setWorks,works } }>
+        <UserContext.Provider value={ 
+          { 
+            user,
+            setUser,
+            loading,
+            setLoading,
+            loginUser,
+            registerUser,
+            loadingPage,
+            contacts,
+            logOut, 
+            close, 
+            setClose, 
+            del, 
+            setDel ,
+            openUpdateModal,
+            setOpenUpdateModal,
+            setWorks,
+            works 
+            } }>
             {children}
         </UserContext.Provider>
     )

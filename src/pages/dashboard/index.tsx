@@ -1,13 +1,13 @@
 import React, { useContext } from 'react'
 import RegisterModal from '../../components/RegisterModal'
-import TechList from '../../components/TechList'
 import UpdateModal from '../../components/UpdateModal'
 import { UserContext } from '../../context/UserContext'
 import { ContainerDash,ButtonLinkRegister, StyledMain } from './style'
+import ContactList from '../../components/ContactList'
 
 
 const Dashboard = () => {
-    const { user, logOut , openUpdateModal ,close , setClose } = useContext(UserContext)
+    const { logOut , openUpdateModal ,close , setClose } = useContext(UserContext)
 
   return (
         
@@ -20,10 +20,8 @@ const Dashboard = () => {
         </div>
         <div className='container'>
             <header>
-                <h2>Olá, {user?.name}</h2>
-                <span>{user?.course_module
-}</span>
-                
+                <h2>Welcome </h2>
+                <span>Texto de welcome</span>
             </header>
         </div>
         <StyledMain>
@@ -31,7 +29,7 @@ const Dashboard = () => {
                 <h2>Contatos</h2>
                 <button type='button' onClick={() => setClose(true)}>+</button>
             </div>
-            <TechList/>
+            <ContactList/>
         </StyledMain>
         { close ? (<RegisterModal/>) : (<p></p>) }
         { openUpdateModal ? (<UpdateModal />) : (<p></p>) }

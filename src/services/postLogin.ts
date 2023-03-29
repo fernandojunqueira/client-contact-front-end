@@ -1,8 +1,7 @@
 import api from "./api";
-import { iProfile } from "./getProfiles";
 
 export interface iData{
-    user: iProfile;
+    id: string;
     token: string;
   }
 
@@ -13,7 +12,7 @@ export interface iLoginBody{
 
 export async function postLogin(body:iLoginBody):Promise<iData>{
 
-    const {data} = await api.post<iData>('sessions',body)
+    const {data} = await api.post<iData>('/login',body)
 
     return data
 

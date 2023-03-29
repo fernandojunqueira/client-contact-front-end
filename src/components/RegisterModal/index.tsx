@@ -8,18 +8,14 @@ import { StyledButton } from '../Button/styled'
 import { StyledForm } from '../Form/style'
 import { StyledInput } from '../Inputs/style'
 import { StyledModal } from './styled'
-
-interface iRegisterNewTech{
-    title: string;
-    status: string;
-  }
+import { iContacts } from '../../services/getProfiles'
 
 const RegisterModal = () => {
     
-    const { registerNewTech  } = useContext(TechContext)
+    const { registerNewContact  } = useContext(TechContext)
     const { setClose } = useContext(UserContext)
 
-    const { register, handleSubmit,formState:{ errors } } = useForm<iRegisterNewTech>({
+    const { register, handleSubmit,formState:{ errors } } = useForm<iContacts>({
         resolver: yupResolver(schema),  
     });
 
@@ -28,35 +24,52 @@ const RegisterModal = () => {
             <div className="overlay">
                 <div className="content">
                     <header className='header__modal'>
-                        <h2>Cadastrar Tecnologia</h2>
+                        <h2>Adicionar novo Contato</h2>
                         <button type='button' onClick={() => setClose(false)}>X</button>
                     </header>
 
-                    <StyledForm className='form__modal' onSubmit={handleSubmit(registerNewTech)}>
+                    <StyledForm className='form__modal' onSubmit={handleSubmit(registerNewContact)}>
                         <label htmlFor='email'>Nome</label>
+                        <StyledInput 
+                        type="text" 
+                        id='firstName' 
+                        placeholder='Digite aqui a tecnologia'
+                        {...register("firstName")}
+                        />
+                        <p>{errors?.firstName?.message}</p>
+
+                        <label htmlFor='email'>Sobrenome</label>
+                        <StyledInput 
+                        type="text" 
+                        id='lastName' 
+                        placeholder='Digite aqui a tecnologia'
+                        {...register("lastName")}
+                        />
+                        <p>{errors?.lastName?.message}</p>
+
+                        <label htmlFor='email'>Telefone</label>
+                        <StyledInput 
+                        type="text" 
+                        id='phone' 
+                        placeholder='Digite aqui a tecnologia'
+                        {...register("phone")}
+                        />
+                        <p>{errors?.phone?.message}</p>
+
+                        <label htmlFor='email'>email</label>
                         <StyledInput 
                         type="text" 
                         id='email' 
                         placeholder='Digite aqui a tecnologia'
-                        {...register("title")}
+                        {...register("email")}
                         />
-                        <p>{errors?.title?.message}</p>
-                        
-                       
-
-                        <label htmlFor='module' >Selecionar status</label>
-                        <select  id="module" {...register("status")}>
-                            <option value="Iniciante" >Iniciante</option>
-                            <option value="Intermediário">Intermediário</option>
-                            <option value="Avançado">Avançado</option>
-                        </select>
-                        
-                  
+                        <p>{errors?.email?.message}</p>
+                                          
                         <StyledButton 
                         type='submit'
                         color={"#EDF2FF"} 
                         background={"#4C6EF5"}
-                        >Cadastrar Tecnologia</StyledButton>
+                        >Adicionar Contato</StyledButton>
 
                     </StyledForm>
                 </div>
