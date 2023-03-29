@@ -1,7 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import React, { useContext } from 'react'
 import { useForm } from 'react-hook-form'
-import { TechContext } from '../../context/ContactContext'
+import { ContactContext } from '../../context/ContactContext'
 import { UserContext } from '../../context/UserContext'
 import { schema } from '../../validations/updateContact'
 import { StyledButton } from '../Button/styled'
@@ -20,7 +20,7 @@ export interface iUpdateContact{
 
 const UpdateModal    = () => {
     
-    const { updateContact , deleteContact } = useContext(TechContext)
+    const { updateContact , deleteContact } = useContext(ContactContext)
     const {  setOpenUpdateModal , openUpdateModal } = useContext(UserContext)
 
     const { register, handleSubmit, formState: {errors} } = useForm<iUpdateContact>({

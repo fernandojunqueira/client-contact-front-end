@@ -6,7 +6,7 @@ import { UserContext } from "./UserContext";
 import { iContacts } from "../services/getProfiles";
 import { iUpdateContact } from "../components/UpdateModal";
 
-interface iTechContextProps{
+interface iContactContextProps{
   children: ReactNode;
 }
 
@@ -16,9 +16,9 @@ interface iContactContext{
   deleteContact: () => void;
 }
 
-export const TechContext = createContext({} as iContactContext)
+export const ContactContext = createContext({} as iContactContext)
 
-function TechProvider({children}:iTechContextProps){
+function ContactProvider({children}:iContactContextProps){
 
     const { setClose, setDel , openUpdateModal , setOpenUpdateModal } = useContext(UserContext)
 
@@ -72,10 +72,10 @@ function TechProvider({children}:iTechContextProps){
     }
 
     return(
-        <TechContext.Provider value={{ registerNewContact  , deleteContact, updateContact  }}>
+        <ContactContext.Provider value={{ registerNewContact  , deleteContact, updateContact  }}>
             {children}
-        </TechContext.Provider>
+        </ContactContext.Provider>
     )
 }
 
-export default TechProvider
+export default ContactProvider

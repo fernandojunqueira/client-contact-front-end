@@ -1,7 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import React, { useContext } from 'react'
 import { useForm } from 'react-hook-form'
-import { TechContext } from '../../context/ContactContext'
+import { ContactContext } from '../../context/ContactContext'
 import { UserContext } from '../../context/UserContext'
 import { schema } from '../../validations/registerNewContact'
 import { StyledButton } from '../Button/styled'
@@ -12,7 +12,7 @@ import { iContacts } from '../../services/getProfiles'
 
 const RegisterModal = () => {
     
-    const { registerNewContact  } = useContext(TechContext)
+    const { registerNewContact  } = useContext(ContactContext)
     const { setClose } = useContext(UserContext)
 
     const { register, handleSubmit,formState:{ errors } } = useForm<iContacts>({

@@ -1,7 +1,7 @@
-import TechProvider from "./ContactContext";
-import UserProvider from "./UserContext";
+import ContactProvider from "./ContactContext";
+import ClientProvider from "./UserContext";
 
-import React, { ReactNode } from 'react'
+import  { ReactNode } from 'react'
 
 interface iProvider{
   children: ReactNode;
@@ -9,11 +9,11 @@ interface iProvider{
 
 const Provider = ({children}:iProvider) => {
   return (
-    <UserProvider>
-        <TechProvider>
+    <ClientProvider>
+        <ContactProvider>
             {children}
-        </TechProvider>
-    </UserProvider>
+        </ContactProvider>
+    </ClientProvider>
   )
 }
 

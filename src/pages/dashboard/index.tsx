@@ -25,7 +25,7 @@ const Dashboard = () => {
             </header>
         </div>
         <StyledMain>
-            <div className='tech'>
+            <div className='contact'>
                 <h2>Contatos</h2>
                 <button type='button' onClick={() => setClose(true)}>+</button>
             </div>

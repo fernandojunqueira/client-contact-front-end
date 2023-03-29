@@ -1,6 +1,6 @@
 import React from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
-import ProtectedRoutes from '../components/PortectedRoutes'
+import ProtectedRoutes from '../components/ProtectedRoutes'
 import Dashboard from '../pages/dashboard'
 import LoginPage from '../pages/login'
 import RegisterPage from '../pages/register'

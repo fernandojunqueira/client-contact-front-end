@@ -10,27 +10,6 @@ interface iUserContextProps{
   children: ReactNode;
 }
 
-interface iTechs{
-  id: string ; 
-  title: string ; 
-  status: string ; 
-  created_at: string ; 
-  updated_at: string ; 
-  map?: any;
-}
-
-interface iWorks{
-	id: string ;
-	title: string ;
-	description: string ;
-	deploy_url: string ;
-	user: {
-		id: string ;
-	},
-	created_at: string ;
-	updated_at: string ;
-}
-
 interface iOpenModal{
   firstName: string;
   lastName: string;
@@ -54,8 +33,6 @@ interface iUserContext{
   setDel:React.Dispatch<React.SetStateAction<string | null>>;
   openUpdateModal:iOpenModal | null;
   setOpenUpdateModal:React.Dispatch<React.SetStateAction<iOpenModal | null>>;
-  works: iWorks[] |  null;
-  setWorks : React.Dispatch<React.SetStateAction<iWorks[] | null>>;
 
   loginUser: (body:iLoginBody) => void;
   registerUser: (body:iRegisterBody) => void;
@@ -66,13 +43,12 @@ interface iUserContext{
 export const UserContext = createContext<iUserContext>({} as iUserContext)
 
 
-function UserProvider({children}:iUserContextProps){  
+function ClientProvider({children}:iUserContextProps){  
 
     const [user, setUser] = useState<iProfile | null>(null)
     const [loading, setLoading] = useState(false)
     const [loadingPage, setLoadingPage] = useState(true)
     const [contacts, setContacts] = useState<iContacts[] | null>(null)
-    const [works, setWorks] = useState<iWorks[] | null>([])
     const [close, setClose] = useState(false)
     const [del, setDel] = useState<string | null>(null)
     const [openUpdateModal,setOpenUpdateModal] = useState<iOpenModal | null>(null)
@@ -112,17 +88,22 @@ function UserProvider({children}:iUserContextProps){
       
           setLoading(true)
       
-          const data = await postLogin(body)
-            
-          localStorage.setItem('@clientToken',data.token)
-          localStorage.setItem('@clientId', data.id)
+          const {token, id} = await postLogin(body)
+          
+          localStorage.setItem('@clientToken',token)
+          localStorage.setItem('@clientId', id)
+
+          const client = await getProfile(token,id)
+
+          setUser(client)
+          setContacts(client.contacts)
       
           toast.success("Login realizado com sucesso!", {
             theme: "dark"
           })
 
           const toNavigate:string = location.state?.from?.pathname ||  'dashboard'
- 
+
           navigate(toNavigate ,{replace:true})
       
         } catch ({response}:any) {
@@ -183,12 +164,10 @@ function UserProvider({children}:iUserContextProps){
             setDel ,
             openUpdateModal,
             setOpenUpdateModal,
-            setWorks,
-            works 
             } }>
             {children}
         </UserContext.Provider>
     )
 }
 
-export default UserProvider
+export default ClientProvider

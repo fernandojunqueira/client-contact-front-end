@@ -130,7 +130,7 @@ export const ButtonLinkRegister = styled(Link)`
     text-decoration: none;
 `
 export const StyledMain = styled.main`
-    .tech{
+    .contact{
         display: flex;
         justify-content: space-between;
 

@@ -1,5 +1,4 @@
 import RoutesMain from './Routes';
-import React from 'react';
 import { ToastContainer } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
@@ -13,7 +12,9 @@ function App() {
     <RoutesMain
     
     />
-    <ToastContainer/>
+    <ToastContainer
+    autoClose={1000}
+    />
     </>
   );
 }
