@@ -36,7 +36,7 @@ const RegisterModal = () => {
                         placeholder='Digite aqui a tecnologia'
                         {...register("firstName")}
                         />
-                        <p>{errors?.firstName?.message}</p>
+                        <h6>{errors?.firstName?.message}</h6>
 
                         <label htmlFor='email'>Sobrenome</label>
                         <StyledInput 
@@ -45,7 +45,7 @@ const RegisterModal = () => {
                         placeholder='Digite aqui a tecnologia'
                         {...register("lastName")}
                         />
-                        <p>{errors?.lastName?.message}</p>
+                        <h6>{errors?.lastName?.message}</h6>
 
                         <label htmlFor='email'>Telefone</label>
                         <StyledInput 
@@ -54,7 +54,7 @@ const RegisterModal = () => {
                         placeholder='Digite aqui a tecnologia'
                         {...register("phone")}
                         />
-                        <p>{errors?.phone?.message}</p>
+                        <h6>{errors?.phone?.message}</h6>
 
                         <label htmlFor='email'>email</label>
                         <StyledInput 
@@ -63,7 +63,7 @@ const RegisterModal = () => {
                         placeholder='Digite aqui a tecnologia'
                         {...register("email")}
                         />
-                        <p>{errors?.email?.message}</p>
+                        <h6>{errors?.email?.message}</h6>
                                           
                         <StyledButton 
                         type='submit'

@@ -94,6 +94,9 @@ export const ContainerDash = styled.div`
         font-size: 18px;
         line-height: 28px;
         color: var(--color-grey-0);
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
     }
 
     p{

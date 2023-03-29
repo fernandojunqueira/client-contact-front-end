@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const StyledForm = styled.form`
     display: flex;
     flex-direction: column;
-    gap: 23px;
+    gap: 20px;
 
     width: 369px;
     max-width: 95%;
@@ -14,6 +14,12 @@ export const StyledForm = styled.form`
     border-radius: 4px;
 
     padding: 42px 22px;
+
+    h6{
+        color: #e61919;
+        margin: 0;
+        height: 13px;
+    }
 
 
     h2{

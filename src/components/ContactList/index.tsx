@@ -21,6 +21,7 @@ const ContactList = () => {
             <div>
                 <p>{contact.email}</p>
             </div>
+            <p>{contact.phone}</p>
         </StyledCard>
     )}
     </StyledList>

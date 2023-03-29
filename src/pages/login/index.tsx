@@ -33,11 +33,11 @@ const LoginPage = () => {
 
                 <label htmlFor='email'>Email</label>
                 <StyledInput type="text" id='email' placeholder='Digite aqui seu email' {...register("email")}/>
-                <p>{errors.email?.message}</p>
+                <h6>{errors.email?.message}</h6>
 
                 <label htmlFor='password' >Senha</label>
                 <StyledInput type="password" id='password' placeholder='Digite aqui sua senha' {...register("password")}/>
-                <p>{errors.password?.message}</p>
+                <h6>{errors.password?.message}</h6>
                   
                 <StyledButton 
                 type='submit'

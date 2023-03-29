@@ -39,27 +39,27 @@ const RegisterPage = () => {
 
             <label htmlFor='name' >Nome</label>
             <StyledInput type="text" id='firstName' placeholder='Digite aqui seu nome' {...register("firstName")}/>
-            <p>{errors.firstName?.message}</p>
+            <h6>{errors.firstName?.message}</h6>
 
             <label htmlFor='name' >Sobrenome</label>
             <StyledInput type="text" id='lastName' placeholder='Digite aqui seu Sobrenome' {...register("lastName")}/>
-            <p>{errors.lastName?.message}</p>
+            <h6>{errors.lastName?.message}</h6>
 
             <label htmlFor='email'>Email</label>
             <StyledInput type="text" id='email' placeholder='Digite aqui seu email' {...register("email")}/>
-            <p>{errors.email?.message}</p>
+            <h6>{errors.email?.message}</h6>
 
             <label htmlFor='bio' >Telefone</label>
             <StyledInput type="text" id='phone' placeholder='Digite aqui seu telefone' {...register("phone")}/>
-            <p>{errors.phone?.message}</p>
+            <h6>{errors.phone?.message}</h6>
 
             <label htmlFor='password'>Senha</label>
             <StyledInput type="password" id='password' placeholder='Digite aqui seu senha' {...register("password")}/>
-            <p>{errors.password?.message}</p>
+            <h6>{errors.password?.message}</h6>
 
             <label htmlFor='confirm-password' >Confirmar Senha</label>
             <StyledInput type="password" id='confirm-password' placeholder='Digite novamente sua senha' {...register("confirmPassword")}/>
-            <p>{errors.confirmPassword?.message}</p>
+            <h6>{errors.confirmPassword?.message}</h6>
 
             <StyledButton type='submit' color={"#EDF2FF"} background={"#4C6EF5"} disabled={loading}>{loading ? 'Cadastrando...': 'Cadastre-se'}</StyledButton>
         </StyledForm>

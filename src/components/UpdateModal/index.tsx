@@ -46,7 +46,7 @@ const UpdateModal    = () => {
                         defaultValue={openUpdateModal?.firstName}
                         {...register("firstName")}     
                         />
-                        <span>{errors?.firstName?.message}</span>
+                        <h6>{errors?.firstName?.message}</h6>
 
                         <label htmlFor='lastName'>Sobrenome</label>
                         <StyledInput 
@@ -56,7 +56,7 @@ const UpdateModal    = () => {
                         defaultValue={openUpdateModal?.lastName}
                         {...register("lastName")}         
                         />
-                        <span>{errors?.lastName?.message}</span>
+                        <h6>{errors?.lastName?.message}</h6>
 
                         <label htmlFor='phone'>Telefone</label>
                         <StyledInput 
@@ -66,7 +66,7 @@ const UpdateModal    = () => {
                         defaultValue={openUpdateModal?.phone}
                         {...register("phone")}         
                         />
-                        <span>{errors?.phone?.message}</span>
+                        <h6>{errors?.phone?.message}</h6>
 
                         <label htmlFor='email'>Email</label>
                         <StyledInput 
@@ -76,7 +76,7 @@ const UpdateModal    = () => {
                         defaultValue={openUpdateModal?.email}
                         {...register("email")} 
                         />
-                        <span>{errors?.email?.message}</span>
+                        <h6>{errors?.email?.message}</h6>
                         
                         <StyledDiv>
                             <StyledButton 

@@ -8,7 +8,8 @@ export const StyledList = styled.ul`
     overflow-y: auto;   
 
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 16px;
 
     padding: 23px;
@@ -16,13 +17,15 @@ export const StyledList = styled.ul`
 `
 export const StyledCard = styled.li`
     display: flex;
+    flex-direction:column;
     justify-content: space-between;
+    width: 30%;
 
     padding: 12px 25px;
     border-radius: 4px;
 
     background-color: var(--color-grey-4);
-
+    
     &:hover{
         background-color: var(--color-grey-1)
     }

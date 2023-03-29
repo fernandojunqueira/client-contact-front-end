@@ -16,7 +16,7 @@ export const StyledDivContainerForm = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
+    
     h1{
         font-size: 26px;
         color: var(--color-primary);
