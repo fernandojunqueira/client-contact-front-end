@@ -1,7 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import React, { useContext } from 'react'
 import { useForm } from 'react-hook-form'
-import { TechContext } from '../../context/TechContext'
+import { TechContext } from '../../context/ContactContext'
 import { UserContext } from '../../context/UserContext'
 import { schema } from '../../validations/registerNewContact'
 import { StyledButton } from '../Button/styled'

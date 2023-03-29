@@ -1,4 +1,4 @@
-import TechProvider from "./TechContext";
+import TechProvider from "./ContactContext";
 import UserProvider from "./UserContext";
 
 import React, { ReactNode } from 'react'

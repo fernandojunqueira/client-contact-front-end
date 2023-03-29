@@ -13,7 +13,7 @@ interface iTechContextProps{
 interface iContactContext{
   registerNewContact: (body:iContacts) => void;
   updateContact: (body:iUpdateContact) => void;
-  deleteTech: () => void;
+  deleteContact: () => void;
 }
 
 export const TechContext = createContext({} as iContactContext)
@@ -58,10 +58,10 @@ function TechProvider({children}:iTechContextProps){
       }
     }
 
-    const deleteTech = async () => {
+    const deleteContact = async () => {
     
         try {
-           await api.delete(`users/techs/${openUpdateModal?.id}`)
+           await api.delete(`contact/${openUpdateModal?.id}`)
 
             setDel('Deleted')
             setOpenUpdateModal(null)
@@ -72,7 +72,7 @@ function TechProvider({children}:iTechContextProps){
     }
 
     return(
-        <TechContext.Provider value={{ registerNewContact  , deleteTech, updateContact  }}>
+        <TechContext.Provider value={{ registerNewContact  , deleteContact, updateContact  }}>
             {children}
         </TechContext.Provider>
     )
