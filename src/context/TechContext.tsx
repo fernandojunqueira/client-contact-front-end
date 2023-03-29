@@ -12,7 +12,7 @@ interface iTechContextProps{
 
 interface iContactContext{
   registerNewContact: (body:iContacts) => void;
-  updateTech: (body:iUpdateContact) => void;
+  updateContact: (body:iUpdateContact) => void;
   deleteTech: () => void;
 }
 
@@ -41,13 +41,13 @@ function TechProvider({children}:iTechContextProps){
         }   
     }
 
-    const updateTech =  async (body:iUpdateContact) => {
+    const updateContact =  async (body:iUpdateContact) => {
     
       try {
-        console.log(body)
+
         await api.patch(`/contact/${openUpdateModal?.id}`,body)
 
-        toast.success("Tecnologia atualizada", {
+        toast.success("Contato atualizado", {
           theme: "dark"
         })
 
@@ -72,7 +72,7 @@ function TechProvider({children}:iTechContextProps){
     }
 
     return(
-        <TechContext.Provider value={{ registerNewContact  , deleteTech, updateTech  }}>
+        <TechContext.Provider value={{ registerNewContact  , deleteTech, updateContact  }}>
             {children}
         </TechContext.Provider>
     )

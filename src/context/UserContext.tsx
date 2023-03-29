@@ -88,7 +88,7 @@ function UserProvider({children}:iUserContextProps){
         
         if(token) {
           try {
-
+            
            const data = await getProfile(token,clientId)
 
             setUser(data)

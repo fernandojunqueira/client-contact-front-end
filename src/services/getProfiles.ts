@@ -24,6 +24,7 @@ export async function getProfile(token:string, clientId:string | null): Promise<
     api.defaults.headers.common.authorization = `Bearer ${token}`
   
     const {data} = await api.get<iProfile>(`/client/${clientId}`)
+    console.log(data)
 
     return data
 }
