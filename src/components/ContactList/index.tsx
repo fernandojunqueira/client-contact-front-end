@@ -20,8 +20,8 @@ const ContactList = () => {
             <h2>{contact.firstName} {contact.lastName}</h2>
             <div>
                 <p>{contact.email}</p>
+                <p>{contact.phone}</p>
             </div>
-            <p>{contact.phone}</p>
         </StyledCard>
     )}
     </StyledList>

@@ -9,11 +9,17 @@ export const StyledList = styled.ul`
 
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
     gap: 16px;
 
     padding: 23px;
     margin-top: 15px;
+
+    @media (width < 768px){
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+    }
 `
 export const StyledCard = styled.li`
     display: flex;
@@ -26,6 +32,23 @@ export const StyledCard = styled.li`
 
     background-color: var(--color-grey-4);
     
+    @media (width < 768px){
+        width: 100%;
+        flex-direction:row;
+
+        div > p:nth-child(2){
+            text-align: right;
+        }
+
+        }
+    @media (width < 486px){
+        div {
+            display: none;
+        }
+        
+
+        }
+
     &:hover{
         background-color: var(--color-grey-1)
     }
@@ -37,9 +60,6 @@ export const StyledCard = styled.li`
     }
 
     div{
-        display: flex;
-        align-items: center;
-        gap: 26px;
 
         img{
             width: 13px;
