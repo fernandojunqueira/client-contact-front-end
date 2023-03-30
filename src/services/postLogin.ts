@@ -13,7 +13,7 @@ export interface iLoginBody{
 export async function postLogin(body:iLoginBody):Promise<iData>{
 
     const {data} = await api.post<iData>('login',body)
-    console.log(data)
+  
     return data
 
 }
