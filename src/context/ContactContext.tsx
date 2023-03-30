@@ -28,7 +28,7 @@ function ContactProvider({children}:iContactContextProps){
       
           await api.post(`/contact/${clientId}`,body)
         
-          toast.success("Nova tecnologia cadastrada", {
+          toast.success("Nova contato adicionado", {
             theme: "dark"
           })
           

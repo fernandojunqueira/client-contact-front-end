@@ -33,7 +33,7 @@ const RegisterModal = () => {
                         <StyledInput 
                         type="text" 
                         id='firstName' 
-                        placeholder='Digite aqui a tecnologia'
+                        placeholder='Digite aqui o nome do contato'
                         {...register("firstName")}
                         />
                         <h6>{errors?.firstName?.message}</h6>
@@ -42,7 +42,7 @@ const RegisterModal = () => {
                         <StyledInput 
                         type="text" 
                         id='lastName' 
-                        placeholder='Digite aqui a tecnologia'
+                        placeholder='Digite aqui o Sobrenome do contato'
                         {...register("lastName")}
                         />
                         <h6>{errors?.lastName?.message}</h6>
@@ -51,7 +51,7 @@ const RegisterModal = () => {
                         <StyledInput 
                         type="text" 
                         id='phone' 
-                        placeholder='Digite aqui a tecnologia'
+                        placeholder='(99)99999-9999'
                         {...register("phone")}
                         />
                         <h6>{errors?.phone?.message}</h6>
@@ -60,7 +60,7 @@ const RegisterModal = () => {
                         <StyledInput 
                         type="text" 
                         id='email' 
-                        placeholder='Digite aqui a tecnologia'
+                        placeholder='Digite aqui o email do contato'
                         {...register("email")}
                         />
                         <h6>{errors?.email?.message}</h6>

@@ -70,6 +70,10 @@ export const ContainerDash = styled.div`
 
     }
 
+    button > svg {
+        margin: 0px 8px -2px 0px;
+    }
+
     main{
         width: 800px;
         max-width: 95%;
@@ -132,6 +136,19 @@ export const ButtonLinkRegister = styled(Link)`
     background-color: var(--color-grey-3);
     text-decoration: none;
 `
+
+export const ButtonCreatePDF = styled.button`
+
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 28px;
+    color: var(--color-grey-0);
+    border-radius: 4px;
+    padding: 6px 16px;
+    background-color: var(--color-grey-3);
+    text-decoration: none;
+`
+
 export const StyledMain = styled.main`
     .contact{
         display: flex;

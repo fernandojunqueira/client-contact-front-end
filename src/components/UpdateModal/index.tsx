@@ -42,7 +42,7 @@ const UpdateModal    = () => {
                         <StyledInput 
                         type="text" 
                         id='firstName' 
-                        placeholder='Digite aqui a tecnologia'
+                        placeholder='Digite aqui o nome do contato'
                         defaultValue={openUpdateModal?.firstName}
                         {...register("firstName")}     
                         />
@@ -52,7 +52,7 @@ const UpdateModal    = () => {
                         <StyledInput 
                         type="text" 
                         id='lastName' 
-                        placeholder='Digite aqui a tecnologia'
+                        placeholder='Digite aqui o sobrenome do contato'
                         defaultValue={openUpdateModal?.lastName}
                         {...register("lastName")}         
                         />
@@ -62,7 +62,7 @@ const UpdateModal    = () => {
                         <StyledInput 
                         type="text" 
                         id='phone' 
-                        placeholder='Digite aqui a tecnologia'
+                        placeholder='(99) 99999-9999'
                         defaultValue={openUpdateModal?.phone}
                         {...register("phone")}         
                         />
@@ -72,7 +72,7 @@ const UpdateModal    = () => {
                         <StyledInput 
                         type="text" 
                         id='email' 
-                        placeholder='Digite aqui a tecnologia'
+                        placeholder='Digite aqui o email do contato'
                         defaultValue={openUpdateModal?.email}
                         {...register("email")} 
                         />

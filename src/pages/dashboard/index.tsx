@@ -2,12 +2,14 @@ import React, { useContext } from 'react'
 import RegisterModal from '../../components/RegisterModal'
 import UpdateModal from '../../components/UpdateModal'
 import { UserContext } from '../../context/UserContext'
-import { ContainerDash,ButtonLinkRegister, StyledMain } from './style'
+import { ContainerDash,ButtonLinkRegister, StyledMain, ButtonCreatePDF } from './style'
 import ContactList from '../../components/ContactList'
+import { clientPDF } from '../../components/Reports/Client'
+import { FaRegFilePdf } from "react-icons/fa";
 
 
 const Dashboard = () => {
-    const { logOut , openUpdateModal ,close , setClose } = useContext(UserContext)
+    const { user, logOut , openUpdateModal ,close , setClose } = useContext(UserContext)
 
   return (
         
@@ -20,8 +22,8 @@ const Dashboard = () => {
         </div>
         <div className='container'>
             <header>
-                <h2>Welcome </h2>
-                <span>Texto de welcome</span>
+                <h2>Bem vindo {user?.firstName}, </h2>
+                <ButtonCreatePDF type='button' onClick={() => clientPDF(user)}><FaRegFilePdf/>Gerar PDF</ButtonCreatePDF>
             </header>
         </div>
         <StyledMain>
