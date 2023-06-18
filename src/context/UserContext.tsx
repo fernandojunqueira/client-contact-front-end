@@ -87,9 +87,9 @@ function ClientProvider({children}:iUserContextProps){
         try {
       
           setLoading(true)
-      
+
           const {token, id} = await postLogin(body)
-          
+
           localStorage.setItem('@clientToken',token)
           localStorage.setItem('@clientId', id)
 

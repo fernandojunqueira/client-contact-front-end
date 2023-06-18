@@ -9,9 +9,7 @@ function App() {
 
   return (
     <>
-    <RoutesMain
-    
-    />
+    <RoutesMain/>
     <ToastContainer
     autoClose={1000}
     />
